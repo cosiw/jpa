@@ -16,19 +16,19 @@ public class BoardDTO {
     private String title;
     private String contents;
     private Long userid;
-    private int likeCount;
+    private int likecount;
     private String crTime;
     private String modTime;
     private String delTime;
     private int likeChecked;
 
     @Builder
-    public BoardDTO(Long bid, String title, String contents, Long userid, int likeCount) {
+    public BoardDTO(Long bid, String title, String contents, Long userid, int likecount) {
         this.bid = bid;
         this.title = title;
         this.contents = contents;
         this.userid = userid;
-        this.likeCount = likeCount;
+        this.likecount = likecount;
 
     }
 
@@ -38,7 +38,7 @@ public class BoardDTO {
                 .title(title)
                 .contents(contents)
                 .userid(userid)
-                .likeCount(likeCount)
+                .likecount(likecount)
                 .build();
 
     }
