@@ -23,7 +23,7 @@ public class BoardServiceImpl implements BoardService{
     public BoardDTO getBoard(Long bid) {
         Board board = boardDAO.getBoard(bid);
 
-        BoardDTO boardDTO =  new BoardDTO(board.getBid(), board.getTitle(), board.getContents(), board.getUserid(), board.getLikeCount());
+        BoardDTO boardDTO =  new BoardDTO(board.getBid(), board.getTitle(), board.getContents(), board.getUserid(), board.getLikecount());
 
         return boardDTO;
     }

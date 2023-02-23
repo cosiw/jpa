@@ -24,11 +24,7 @@ public class BoardController {
 
     @GetMapping(value = "/{bid}")
     public ResponseEntity getBoard(@PathVariable Long bid){
-
-
         BoardDTO boardDTO = boardService.getBoard(bid);
-
-
         return new ResponseEntity(boardDTO, HttpStatus.OK);
     }
 

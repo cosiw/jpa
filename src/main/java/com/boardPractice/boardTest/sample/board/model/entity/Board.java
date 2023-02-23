@@ -18,23 +18,23 @@ public class Board extends BaseTimeEntity{
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name="BID")
+    @Column
     private Long bid;
-    @Column(name="TITLE")
+    @Column
     private String title;
-    @Column(name="CONTENTS")
+    @Column
     private String contents;
-    @Column(name="LIKECOUNT")
-    private int likeCount;
-    @Column(name="USERID")
+    @Column
+    private int likecount;
+    @Column
     private Long userid;
 
     @Builder
-    public Board(Long bid, String title, String contents, int likeCount, Long userid){
+    public Board(Long bid, String title, String contents, int likecount, Long userid){
         this.bid = bid;
         this.title = title;
         this.contents = contents;
-        this.likeCount = likeCount;
+        this.likecount = likecount;
         this.userid = userid;
     }
 
@@ -43,7 +43,7 @@ public class Board extends BaseTimeEntity{
                 .bid(bid)
                 .title(title)
                 .contents(contents)
-                .likeCount(likeCount)
+                .likecount(likecount)
                 .userid(userid)
                 .build();
     }
