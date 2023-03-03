@@ -37,7 +37,6 @@ public class BoardDTO {
                 .bid(bid)
                 .title(title)
                 .contents(contents)
-                .userid(userid)
                 .likecount(likecount)
                 .build();
 

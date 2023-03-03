@@ -26,16 +26,18 @@ public class Board extends BaseTimeEntity{
     private String contents;
     @Column
     private int likecount;
-    @Column
-    private Long userid;
+
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private User user;
 
     @Builder
-    public Board(Long bid, String title, String contents, int likecount, Long userid){
+    public Board(Long bid, String title, String contents, int likecount, User user){
         this.bid = bid;
         this.title = title;
         this.contents = contents;
         this.likecount = likecount;
-        this.userid = userid;
+        this.user = user;
     }
 
     public BoardDTO toDTO(Board b){
@@ -44,7 +46,7 @@ public class Board extends BaseTimeEntity{
                 .title(title)
                 .contents(contents)
                 .likecount(likecount)
-                .userid(userid)
+                .userid(user.getUserid())
                 .build();
     }
 
