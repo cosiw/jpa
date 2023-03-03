@@ -1,6 +1,7 @@
 package com.boardPractice.boardTest.sample.board.model.service;
 
 import com.boardPractice.boardTest.sample.board.model.dto.BoardDTO;
+import com.boardPractice.boardTest.sample.board.model.dto.LikeDTO;
 import com.boardPractice.boardTest.sample.board.model.entity.Board;
 
 public interface BoardService {
@@ -9,4 +10,6 @@ public interface BoardService {
 
     BoardDTO updateBoard(BoardDTO boardDTO);
     void deleteBoard(Long bid);
+
+    LikeDTO likeBoard(LikeDTO likeDTO);
 }

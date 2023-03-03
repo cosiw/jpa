@@ -1,7 +1,10 @@
 package com.boardPractice.boardTest.controller;
 
 import ch.qos.logback.core.CoreConstants;
+import com.boardPractice.boardTest.common.Utils;
 import com.boardPractice.boardTest.sample.board.model.dto.BoardDTO;
+import com.boardPractice.boardTest.sample.board.model.dto.HeaderDTO;
+import com.boardPractice.boardTest.sample.board.model.dto.LikeDTO;
 import com.boardPractice.boardTest.sample.board.model.service.BoardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,7 @@ public class BoardController {
 
         this.boardService = boardService;
     }
+    Utils util = new Utils();
 
     @GetMapping(value = "/{bid}")
     public ResponseEntity getBoard(@PathVariable Long bid){
@@ -53,6 +57,21 @@ public class BoardController {
     public ResponseEntity deleteBoard(@PathVariable Long bid){
 
         boardService.deleteBoard(bid);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+    @PostMapping(value="/like/{bid}")
+    public ResponseEntity likeBoard(@RequestHeader(value="Authentication") String auth,@PathVariable Long bid){
+
+        HeaderDTO headerDTO  = util.AuthtoHeader(auth);
+        LikeDTO likeDTO = LikeDTO.builder()
+                            .userid(headerDTO.getUserid())
+                            .bid(bid)
+                            .build();
+
+        System.out.println("likeDTO" + likeDTO.getBid());
+        System.out.println("likeDTO" + likeDTO.getUserid());
+        boardService.likeBoard(likeDTO);
 
         return new ResponseEntity(HttpStatus.OK);
     }
